@@ -427,6 +427,14 @@ header, #site-header {
     margin-bottom: 1.5rem;
     border: 1px solid rgba(255, 170, 0, 0.3);
 }
+.brand-engineering,
+.brand-engineering .word {
+    background: linear-gradient(90deg, #ff9d00, #ffa600);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
 
 .page-hero h1 {
     font-size: clamp(1.9rem, 5vw, 3.2rem);

@@ -47,13 +47,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Split headline text into words for the staggered word-reveal effect
-    document.querySelectorAll('.word-reveal').forEach(el => {
-        const text = el.textContent;
-        el.innerHTML = text.split(' ').map((word, i) =>
-            `<span class="word" style="animation-delay:${0.05 + i * 0.04}s">${word}&nbsp;</span>`
-        ).join('');
-    });
+    document.querySelectorAll(".word-reveal").forEach(el => {
+    const walk = node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent
+                .split(/(\s+)/)
+                .map(part => {
+                    if (part.trim() === "") return document.createTextNode(part);
 
+                    const span = document.createElement("span");
+                    span.className = "word";
+                    span.textContent = part;
+                    return span;
+                });
+        }
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            const clone = node.cloneNode(false);
+
+            [...node.childNodes].forEach(child => {
+                walk(child).forEach(n => clone.appendChild(n));
+            });
+
+            return [clone];
+        }
+
+        return [];
+    };
+
+    const nodes = walk(el);
+
+    el.innerHTML = "";
+
+    let delay = 0.05;
+
+    el.querySelectorAll(".word").forEach(() => {});
+
+    nodes.forEach(node => el.appendChild(node));
+
+    el.querySelectorAll(".word").forEach(word => {
+        word.style.animationDelay = `${delay}s`;
+        delay += 0.04;
+    });
+});
     // Scroll-triggered fade-in reveal
     const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
     if ('IntersectionObserver' in window) {

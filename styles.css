@@ -1678,23 +1678,30 @@ footer {
 
 /* WhatsApp Popup Styles */
   .wa-widget {
-    position: fixed;
-    bottom: -500px;
-    right: 20px;
-    left: auto;
-    width: 320px;
-    background-color: #efeae2; /* WhatsApp chat wallpaper background color */
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    overflow: hidden;
-    transition: bottom 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  left: auto;
+  width: 320px;
+  background-color: #efeae2;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  
+  /* Replace bottom: -500px with smooth opacity/transform toggle */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
+}
 
-  .wa-widget.active {
-    bottom: 20px;
-  }
+.wa-widget.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 
   .wa-header {
     background-color: #075e54;

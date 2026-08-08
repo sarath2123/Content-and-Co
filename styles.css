@@ -427,14 +427,9 @@ header, #site-header {
     margin-bottom: 1.5rem;
     border: 1px solid rgba(255, 170, 0, 0.3);
 }
-.brand-engineering,
 .brand-engineering .word {
-    background: linear-gradient(90deg, #ff9d00, #ffa600);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
+    color: #F5B041;
+    -webkit-text-fill-color: #ffaa00;}
 
 .page-hero h1 {
     font-size: clamp(1.9rem, 5vw, 3.2rem);
@@ -1680,3 +1675,146 @@ footer {
         max-width: 1440px;
     }
 }
+
+/* WhatsApp Popup Styles */
+  .wa-widget {
+    position: fixed;
+    bottom: -500px;
+    right: 20px;
+    left: auto;
+    width: 320px;
+    background-color: #efeae2; /* WhatsApp chat wallpaper background color */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow: hidden;
+    transition: bottom 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .wa-widget.active {
+    bottom: 20px;
+  }
+
+  .wa-header {
+    background-color: #075e54;
+    color: #ffffff;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wa-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .wa-avatar {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .wa-online-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 9px;
+    height: 9px;
+    background-color: #25d366;
+    border: 2px solid #075e54;
+    border-radius: 50%;
+  }
+
+  .wa-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wa-name {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .wa-status {
+    font-size: 11px;
+    opacity: 0.85;
+  }
+
+  .wa-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.8;
+  }
+
+  .wa-close:hover {
+    opacity: 1;
+  }
+
+  .wa-body {
+    padding: 16px;
+    min-height: 120px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .wa-message {
+    background-color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 0px 8px 8px 8px;
+    font-size: 13px;
+    color: #111b21;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.13);
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .wa-footer {
+    display: flex;
+    padding: 10px;
+    background-color: #f0f2f5;
+    gap: 8px;
+  }
+
+  .wa-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    background-color: #ffffff;
+  }
+
+  .wa-send-btn {
+    background-color: #09d261;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+
+  .wa-send-btn:hover {
+    background-color: #07a84e;
+  }

@@ -192,3 +192,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const waWidget = document.getElementById("waWidget");
+    const waCloseBtn = document.getElementById("waCloseBtn");
+    const waForm = document.getElementById("waForm");
+    const waInput = document.getElementById("waInput");
+
+    // Phone number from your site metadata (+91 9342141898)
+    const phoneNumber = "919342141898"; 
+
+    // Slide up the popup after 1.5 seconds when visitor enters
+    setTimeout(() => {
+      waWidget.classList.add("active");
+    }, 1500);
+
+    // Close button event
+    waCloseBtn.addEventListener("click", () => {
+      waWidget.classList.remove("active");
+    });
+
+    // Handle message sending
+    waForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userMessage = waInput.value.trim();
+
+      if (userMessage !== "") {
+        // Encode user input for URL
+        const encodedMsg = encodeURIComponent(userMessage);
+        
+        // WhatsApp Web / App redirect URL
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, "_blank");
+
+        // Clear input field
+        waInput.value = "";
+      }
+    });
+  });

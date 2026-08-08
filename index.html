@@ -219,34 +219,67 @@
     </div>
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="/" class="logo" style="margin-bottom: 0.5rem;">
-                    <span class="logo-text">Content & Co</span>
+     <footer class="custom-footer">
+    <div class="footer-wrapper">
+        <!-- Top Left Navigation & Socials -->
+        <div class="footer-nav-section">
+            <div class="footer-col">
+                <span class="col-title">Socials</span>
+                <a href="#">Instagram</a>
+                <a href="#">Youtube</a>
+                <a href="#">Facebook</a>
+            </div>
+            <div class="footer-col">
+                <span class="col-title">Nav</span>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="testimonials.html">Testimonals</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <!-- Right Side Contact Card -->
+        <div class="footer-contact-card">
+            <h2>Let’s Talk</h2>
+            <p class="card-subtitle">Let’s create something that speaks for itself.</p>
+            
+            <form data-whatsapp-form data-category="Footer Contact Form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="footer-name">Name</label>
+                        <input type="text" id="footer-name" class="form-control" placeholder="Sarah J." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footer-email">Email</label>
+                        <input type="email" id="footer-email" class="form-control" placeholder="sarah@website.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="footer-message">Message</label>
+                    <textarea id="footer-message" class="form-control" placeholder="Hello, I would like to..." rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn-footer-submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Bottom Left Inverted Curved Brand Section -->
+        <div class="footer-brand-badge">
+            <div class="brand-badge-inner">
+                <a href="index.html" class="brand-logo">
+                    <span class="logo-name">Content & Co.</span>
+                    
                 </a>
-                <p style="font-size:0.85rem; margin-top:0.5rem;">Content. Strategy. Growth.</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-col">
-                    <h4>Site</h4>
-                    <a href="/">Home</a>
-                    <a href="/services">Services</a>
-                    <a href="/about">About Us</a>
-                    <a href="/testimonials">Testimonials</a>
-                    <a href="/contact">Contact Us</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Content & Co</h4>
-                    <p style="font-size:0.85rem;">+91 9342141898</p>
-                    <p style="font-size:0.85rem;">Founded by Sarath Chandran.M</p>
-                </div>
             </div>
         </div>
-        <div class="footer-copy">
-            <p>&copy; 2026 Content & Co. All Rights Reserved.</p>
+
+        <!-- Bottom Right Footer Info -->
+        <div class="footer-bottom-info">
+            <span>© 2026 Content & Co. All Rights Reserved.</span>
+            <span>Founded By Sarath Chandran</span>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="main.js"></script>
 </body>

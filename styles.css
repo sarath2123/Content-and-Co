@@ -42,8 +42,6 @@ body {
    FADE-IN ANIMATION SYSTEM
    =================================================== */
 
-/* Page-load sequence: elements with [data-load] fade/rise in on load,
-   staggered by their data-load index. Respects reduced-motion. */
 [data-load] {
     opacity: 0;
     transform: translateY(14px);
@@ -59,8 +57,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Scroll-triggered reveals: elements with .reveal fade in as they
-   enter the viewport (class toggled by IntersectionObserver in main.js) */
 .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -83,10 +79,9 @@ body {
 .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.28s; }
 .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.46s; }
 .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.64s; }
-.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.82s; }
 .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 1.0s; }
 
-/* Word-by-word headline reveal: wrap words in <span class="word"> */
 .word-reveal .word {
     display: inline-block;
     opacity: 0;
@@ -122,7 +117,6 @@ body {
    MICRO-INTERACTIONS
    =================================================== */
 
-/* Button sweep */
 .btn-primary, .btn-secondary, .btn-submit, .btn-nav {
     background-image: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.4) 48%, rgba(255,255,255,0.4) 52%, transparent 70%);
     background-repeat: no-repeat;
@@ -137,7 +131,6 @@ body {
     transform: scale(0.97);
 }
 
-/* Card spotlight */
 .service-card, .service-detail-card, .pricing-card, .contact-box,
 .standalone-card, .member-card, .testimonial-card, .testimonial-card-light,
 .whatsapp-cta {
@@ -163,6 +156,8 @@ body {
     opacity: 1;
 }
 
+
+
 /* ===================================================
    RIOTT-STYLE PILL NAVBAR & IPHONE GLASS SCROLL EFFECT
    =================================================== */
@@ -173,13 +168,13 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    pointer-events: none; /* Allows clicks around floating pill */
+    pointer-events: none;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-container {
     pointer-events: auto;
-    max-width: 920px; /* Compact pill width */
+    max-width: 920px;
     margin: 0 auto;
     padding: 0.5rem 0.6rem 0.5rem 1.8rem;
     height: 60px;
@@ -192,7 +187,6 @@ body {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Vertical line divider after logo */
 .nav-divider {
     width: 1px;
     height: 22px;
@@ -200,19 +194,27 @@ body {
     margin: 0 1.8rem 0 1.2rem;
 }
 
-/* Logo container flex alignment */
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem; /* Spacing between image and text */
+    gap: 0.6rem;
     text-decoration: none;
 }
 
-/* Logo Image Styling */
 .logo-img {
-    height: 60px; /* Adjust height to fit inside the 60px navbar */
+    height: 60px;
     width: auto;
     object-fit: contain;
+}
+
+@media screen and (max-width: 900px) {
+    #site-header .logo-img {
+        height: 50px !important;
+    }
+
+    #site-header .logo {
+        gap: 0.45rem !important;
+    }
 }
 
 .logo-text {
@@ -245,7 +247,7 @@ body {
 
 /* Red Pill Button */
 .btn-nav {
-    background-color: #e60023; /* Bright Red */
+    background-color: #e60023;
     color: var(--white) !important;
     padding: 0.65rem 1.6rem;
     border-radius: 50px;
@@ -254,9 +256,6 @@ body {
     text-decoration: none;
     transition: var(--transition);
     border: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-nav:hover {
@@ -264,22 +263,14 @@ body {
     transform: scale(1.02);
 }
 
-.mobile-menu-btn {
-    display: none; /* Hides hamburger menu on laptops & desktops */
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
 /* ===================================================
-   GLASSMORPHISM ON SCROLL (iPhone Translucent Blur)
+   GLASSMORPHISM ON SCROLL
    =================================================== */
 
 #site-header.scrolled {
     top: 12px;
 }
 
-/* Optimized Mobile Glass Effect (Applies to all scrolled states) */
 #site-header.scrolled .nav-container {
     background: rgba(255, 255, 255, 0.32) !important;
     backdrop-filter: blur(24px) saturate(200%) !important;
@@ -290,9 +281,38 @@ body {
                 inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 /* ===================================================
-   MOBILE ADJUSTMENTS (Updated Rule Specifics)
+   MOBILE ADJUSTMENTS (Updated for Mobile Dropdown Button)
    =================================================== */
+/* Desktop default: keep button hidden inside dropdown list, display on top level if needed */
+.mobile-only-btn {
+    display: none;
+}
+
+/* Target screen sizes between 320px and 768px */
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    /* Show the button list-item inside the dropdown menu */
+    .nav-links .mobile-only-btn {
+        display: block;
+        width: 100%;
+        margin-top: -0.9rem;
+    }
+
+    /* Style the Contact button full-width inside the dropdown */
+    .nav-links .btn-nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+} 
 
 @media screen and (max-width: 900px) {
     #site-header {
@@ -303,7 +323,7 @@ body {
         width: 92% !important;
         max-width: 100% !important;
         height: 52px !important;
-        padding: 0 0.8rem 0 1.2rem !important;
+        padding: 0 1.2rem !important;
         justify-content: space-between !important;
     }
     
@@ -311,12 +331,17 @@ body {
         display: none !important;
     }
 
-    #site-header .logo-img {
-        height: 42px !important;
+    /* Hide top-level standalone button on mobile */
+    #site-header > .nav-container > .btn-nav {
+        display: none !important;
     }
 
-    #site-header .logo {
-        gap: 0.45rem !important;
+    /* Format Contact button when nested inside dropdown */
+    #site-header .nav-links .btn-nav {
+        display: inline-block !important;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
     }
 
     #site-header .logo-text {
@@ -324,16 +349,7 @@ body {
         letter-spacing: -0.3px !important;
     }
 
-    /* Keep header action button visible in the mobile pill header */
-    #site-header > .nav-container > .btn-nav {
-        display: inline-flex !important;
-        padding: 0.45rem 1rem !important;
-        font-size: 0.8rem !important;
-        margin-left: auto;
-        margin-right: 0.5rem;
-    }
-
-    /* Clean Hamburger Menu Button */
+    /* Clean Hamburger Menu */
     #site-header .mobile-menu-btn {
         display: flex !important;
         align-items: center !important;
@@ -350,7 +366,7 @@ body {
         color: var(--dark) !important;
     }
 
-    /* Dropdown menu overlay for page links */
+    /* Dropdown menu overlay */
     #site-header .nav-links {
         display: none;
         flex-direction: column;
@@ -371,15 +387,10 @@ body {
     #site-header .nav-links.active {
         display: flex !important;
     }
-
-    /* Hide redundant duplicate buttons within dropdown list if present */
-    .nav-links .mobile-only-btn {
-        display: none !important;
-    }
 }
 
 /* ===================================================
-   PAGE HERO (interior pages)
+   PAGE HERO
    =================================================== */
 .page-hero {
     padding: 10rem 2rem 4rem;
@@ -616,7 +627,7 @@ body {
 }
 
 /* ===================================================
-   SERVICE DETAIL CARDS (services page)
+   SERVICE DETAIL CARDS
    =================================================== */
 .services-detail {
     max-width: 1100px;
@@ -687,7 +698,7 @@ body {
 }
 
 /* ===================================================
-   STATS STRIP (about page)
+   STATS STRIP
    =================================================== */
 .stats {
     padding: 4rem 2rem;
@@ -716,7 +727,7 @@ body {
 }
 
 /* ===================================================
-   STORY / VALUES (about page)
+   STORY / VALUES
    =================================================== */
 .story {
     padding: 2rem 2rem 6rem;
@@ -768,7 +779,7 @@ body {
 }
 
 /* ===================================================
-   FOUNDER / CO-FOUNDER (about page)
+   FOUNDER / CO-FOUNDER
    =================================================== */
 .founder-section {
     padding: 5rem 2rem;
@@ -950,7 +961,6 @@ body {
     font-size: 0.85rem;
 }
 
-/* Testimonials page: light variant sections */
 .testimonials-page-grid {
     max-width: 1280px;
     margin: 0 auto;
@@ -979,7 +989,6 @@ body {
     color: var(--dark);
 }
 
-/* CTA band */
 .cta-band {
     background: var(--primary-light);
     border-top: 1px solid rgba(255,170,0,0.25);
@@ -1150,7 +1159,6 @@ textarea.form-control {
     text-decoration: none;
 }
 
-/* Modal / Bot Auto Response */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -1337,7 +1345,6 @@ textarea.form-control {
     font-size: 0.95rem;
 }
 
-/* WhatsApp CTA (contact page) */
 .whatsapp-cta {
     background: var(--white);
     border: 1px solid var(--border-color);
@@ -1514,10 +1521,6 @@ textarea.form-control {
     }
     .logo-text {
         font-size: 1.25rem;
-    }
-    .logo-crescent {
-        width: 32px;
-        height: 32px;
     }
 
     .hero, .page-hero {
@@ -1721,7 +1724,7 @@ textarea.form-control {
 }
 
 /* ===================================================
-   OPTIMIZED & RESPONSIVE DESIGNER FOOTER STYLES
+   FOOTER STYLES
    =================================================== */
 
 .custom-footer {
@@ -1737,15 +1740,12 @@ textarea.form-control {
     padding: 3rem 3rem 1.5rem;
     color: #ffffff;
     box-sizing: border-box;
-
-    /* Image Background Implementation */
     background-image: url('images/footerbackground.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-/* Nav & Socials */
 .footer-nav-section {
     display: flex;
     gap: 4rem;
@@ -1777,7 +1777,6 @@ textarea.form-control {
     opacity: 0.7;
 }
 
-/* Let's Talk Form Card */
 .footer-contact-card {
     position: absolute;
     top: 2rem;
@@ -1870,7 +1869,6 @@ textarea.form-control {
     border-color: #cccccc;
 }
 
-/* Bottom Inverted Logo Badge */
 .footer-brand-badge {
     position: absolute;
     bottom: 0;
@@ -1902,7 +1900,6 @@ textarea.form-control {
     margin-top: 0.2rem;
 }
 
-/* Footer Bottom Right Credits */
 .footer-bottom-info {
     display: flex;
     justify-content: flex-end;
@@ -1912,10 +1909,6 @@ textarea.form-control {
     color: rgba(255, 255, 255, 0.85);
     margin-top: 17rem;
 }
-
-/* ===================================================
-   FULL DEVICE RESPONSIVENESS
-   =================================================== */
 
 @media (max-width: 992px) {
     .footer-wrapper {
@@ -1943,11 +1936,6 @@ textarea.form-control {
         border-radius: 20px;
         margin-bottom: 1.5rem;
         padding: 1rem 1.5rem;
-    }
-
-    .footer-brand-badge::before,
-    .footer-brand-badge::after {
-        display: none;
     }
 
     .footer-bottom-info {

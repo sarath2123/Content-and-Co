@@ -83,7 +83,7 @@ body {
 .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.28s; }
 .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.46s; }
 .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.64s; }
-.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.82s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
 .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 1.0s; }
 
 /* Word-by-word headline reveal: wrap words in <span class="word"> */
@@ -199,6 +199,7 @@ body {
     background-color: var(--border-color);
     margin: 0 1.8rem 0 1.2rem;
 }
+
 /* Logo container flex alignment */
 .logo {
     display: flex;
@@ -212,58 +213,6 @@ body {
     height: 60px; /* Adjust height to fit inside the 60px navbar */
     width: auto;
     object-fit: contain;
-}
-@media screen and (max-width: 900px) {
-    /* Hide ONLY the standalone header contact button, not the dropdown list item */
-    #site-header > .nav-container > .btn-nav {
-        display: none !important;
-    }
-
-    /* Ensure the button inside the dropdown links list displays correctly */
-    #site-header .nav-links .mobile-only-btn {
-        display: block;
-        width: 100%;
-    }
-
-    #site-header .nav-links .btn-nav {
-        display: block !important;
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem 1rem;
-    }
-}
-/* Target screen sizes between 320px and 768px */
-@media screen and (min-width: 320px) and (max-width: 768px) {
-    /* Show the button list-item inside the dropdown menu */
-    .nav-links .mobile-only-btn {
-        display: block;
-        width: 100%;
-        margin-top: -0.9rem;
-    }
-
-    /* Style the Contact button full-width inside the dropdown */
-    .nav-links .btn-nav {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem 1rem;
-    }
-} 
-@media screen and (max-width: 900px) {
-    /* Scale image slightly for smaller mobile pill height */
-    #site-header .logo-img {
-        height: 50px !important;
-    }
-
-    #site-header .logo {
-        gap: 0.45rem !important;
-    }
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
 }
 
 .logo-text {
@@ -294,7 +243,7 @@ body {
     color: var(--dark);
 }
 
-/* Red Pill Button (Matched to Reference Image) */
+/* Red Pill Button */
 .btn-nav {
     background-color: #e60023; /* Bright Red */
     color: var(--white) !important;
@@ -305,11 +254,21 @@ body {
     text-decoration: none;
     transition: var(--transition);
     border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-nav:hover {
     background-color: #cc001f;
     transform: scale(1.02);
+}
+
+.mobile-menu-btn {
+    display: none; /* Hides hamburger menu on laptops & desktops */
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 /* ===================================================
@@ -322,27 +281,17 @@ body {
 
 /* Optimized Mobile Glass Effect (Applies to all scrolled states) */
 #site-header.scrolled .nav-container {
-    /* 1. Ultra-thin translucent base layer */
     background: rgba(255, 255, 255, 0.32) !important;
-    
-    /* 2. Tuned blur & saturation for smooth mobile GPU rendering */
     backdrop-filter: blur(24px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
-    
-    /* 3. Crisp multi-layered specular edge highlights */
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
                 inset 0 1px 1px 0 rgba(255, 255, 255, 0.8),
                 inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
-.mobile-menu-btn {
-    display: none; /* Hides hamburger menu on laptops & desktops */
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
+
 /* ===================================================
-   MOBILE ADJUSTMENTS (Forced Specificity & Clean Layout)
+   MOBILE ADJUSTMENTS (Updated Rule Specifics)
    =================================================== */
 
 @media screen and (max-width: 900px) {
@@ -354,7 +303,7 @@ body {
         width: 92% !important;
         max-width: 100% !important;
         height: 52px !important;
-        padding: 0 1.2rem !important;
+        padding: 0 0.8rem 0 1.2rem !important;
         justify-content: space-between !important;
     }
     
@@ -362,9 +311,12 @@ body {
         display: none !important;
     }
 
-    /* Force hide the Contact button on mobile */
-    #site-header .btn-nav {
-        display: none !important;
+    #site-header .logo-img {
+        height: 42px !important;
+    }
+
+    #site-header .logo {
+        gap: 0.45rem !important;
     }
 
     #site-header .logo-text {
@@ -372,7 +324,16 @@ body {
         letter-spacing: -0.3px !important;
     }
 
-    /* Clean Hamburger Menu - No Circle Background */
+    /* Keep header action button visible in the mobile pill header */
+    #site-header > .nav-container > .btn-nav {
+        display: inline-flex !important;
+        padding: 0.45rem 1rem !important;
+        font-size: 0.8rem !important;
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }
+
+    /* Clean Hamburger Menu Button */
     #site-header .mobile-menu-btn {
         display: flex !important;
         align-items: center !important;
@@ -380,7 +341,7 @@ body {
         font-size: 1.3rem !important;
         width: auto !important;
         height: auto !important;
-        background: transparent !important; /* Circle removed */
+        background: transparent !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         border: none !important;
@@ -389,7 +350,7 @@ body {
         color: var(--dark) !important;
     }
 
-    /* Dropdown menu overlay */
+    /* Dropdown menu overlay for page links */
     #site-header .nav-links {
         display: none;
         flex-direction: column;
@@ -409,6 +370,11 @@ body {
 
     #site-header .nav-links.active {
         display: flex !important;
+    }
+
+    /* Hide redundant duplicate buttons within dropdown list if present */
+    .nav-links .mobile-only-btn {
+        display: none !important;
     }
 }
 
@@ -1480,12 +1446,6 @@ textarea.form-control {
         padding: 0.85rem 0;
         min-height: 44px;
     }
-    .btn-nav {
-        display: inline-flex;
-        width: auto;
-        text-align: center;
-        justify-content: center;
-    }
 
     .hero, .page-hero {
         padding-top: 7rem;
@@ -1779,10 +1739,7 @@ textarea.form-control {
     box-sizing: border-box;
 
     /* Image Background Implementation */
-    background-image: 
-       
-        url('images/footerbackground.png');
-    
+    background-image: url('images/footerbackground.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1820,7 +1777,7 @@ textarea.form-control {
     opacity: 0.7;
 }
 
-/* Let's Talk Form Card (Fixed Height & Button Alignment) */
+/* Let's Talk Form Card */
 .footer-contact-card {
     position: absolute;
     top: 2rem;
@@ -1913,7 +1870,7 @@ textarea.form-control {
     border-color: #cccccc;
 }
 
-/* Bottom Inverted Logo Badge (Left Corner) */
+/* Bottom Inverted Logo Badge */
 .footer-brand-badge {
     position: absolute;
     bottom: 0;
@@ -1957,7 +1914,7 @@ textarea.form-control {
 }
 
 /* ===================================================
-   FULL DEVICE RESPONSIVENESS (Desktops, Tablets, Mobile)
+   FULL DEVICE RESPONSIVENESS
    =================================================== */
 
 @media (max-width: 992px) {
@@ -1970,7 +1927,6 @@ textarea.form-control {
         gap: 3rem;
     }
 
-    /* Convert absolute card positioning into normal block layout */
     .footer-contact-card {
         position: relative;
         top: 0;

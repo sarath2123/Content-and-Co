@@ -164,118 +164,6 @@ body {
 }
 
 /* ===================================================
-   TOP CONTACT & SOCIAL BAR
-   =================================================== */
-.top-bar {
-    background-color: #EFECE6;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    padding: 0.45rem 0;
-}
-
-.top-bar-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.top-bar-contact {
-    display: flex;
-    align-items: center;
-    gap: 1.8rem;
-}
-
-.top-bar-contact a {
-    color: var(--text-main);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.top-bar-contact a i {
-    color: #e63946;
-    font-size: 0.9rem;
-}
-
-.top-bar-contact a:hover {
-    color: var(--primary-dark);
-}
-
-/* Social Icons */
-.top-bar-social {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.social-icon {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: var(--transition);
-}
-
-.social-icon.fb { background-color: #1877F2; }
-.social-icon.insta { background-color: #E4405F; }
-.social-icon.yt { background-color: #FF0000; }
-
-.social-icon:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-}
-
-/* ===================================================
-   RESPONSIVE OVERRIDES
-   =================================================== */
-@media (max-width: 768px) {
-    .top-bar {
-        padding: 0.2rem 0;
-    }
-    .top-bar-container {
-        padding: 0 0.75rem;
-        justify-content: center;
-    }
-    
-    .top-bar-social {
-        display: none; 
-    }
-    
-    .top-bar-contact {
-        gap: 1rem;
-        font-size: 0.78rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .top-bar {
-        padding: 0.3rem 0;
-    }
-
-    .top-bar-contact {
-        font-size: 0.68rem;
-        gap: 0.35rem 0.8rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .top-bar-contact a {
-        white-space: nowrap;
-    }
-}
-
-/* ===================================================
    RIOTT-STYLE PILL NAVBAR & IPHONE GLASS SCROLL EFFECT
    =================================================== */
 
@@ -324,6 +212,25 @@ body {
     height: 60px; /* Adjust height to fit inside the 60px navbar */
     width: auto;
     object-fit: contain;
+}
+@media screen and (max-width: 900px) {
+    /* Hide ONLY the standalone header contact button, not the dropdown list item */
+    #site-header > .nav-container > .btn-nav {
+        display: none !important;
+    }
+
+    /* Ensure the button inside the dropdown links list displays correctly */
+    #site-header .nav-links .mobile-only-btn {
+        display: block;
+        width: 100%;
+    }
+
+    #site-header .nav-links .btn-nav {
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
 }
 /* Target screen sizes between 320px and 768px */
 @media screen and (min-width: 320px) and (max-width: 768px) {
